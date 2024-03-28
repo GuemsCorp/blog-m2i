@@ -1,4 +1,6 @@
 <?php
+// Initialisation de le session
+session_start();
 
 // Chargement des paramètre du site
 require 'config/param.inc.php';
@@ -8,7 +10,9 @@ require 'sql/pdoConnect.inc.php';
 $pdo = pdoConnect();
 
 // Chargement des librairies
+require 'core/core.inc.php';
 require 'lib/pluralize.lib.php';
+require 'lib/flash.lib.php';
 
 // Router
 $page = DEFAULT_PAGE;
@@ -24,3 +28,6 @@ if (file_exists($url)) {
 } else {
     echo "404 File Not Found !!!";
 }
+
+echo "<h2>Debug SESSION</h2>";
+var_dump($_SESSION);

@@ -2,19 +2,17 @@
 require 'sql/user.sql.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //var_dump($_POST); exit;
-    $user = loginUser($_POST['email']);
-    //var_dump($user); exit;
-    if (password_verify($_POST['password'], $user['password'])) {
-        session_start();
-        var_dump($_SESSION); exit;
-        //die('OK');
-        header('Location: index.php');
-        exit;
-    
+    $hashPassword = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $_POST['password'] = $hashPassword;
+    $isRegistered = registerUser($_POST);
+
+    if ($isRegistered) {
+        set_flash_message('blog', 'Inscription réussie !','success');
+    } else {
+        set_flash_message('blog', 'Inscription échouée !','danger');
     }
-    //die('NOK');
-    header('Location: index.php?page=login');
+    
+    header('Location: index.php');
     exit;
 }
 

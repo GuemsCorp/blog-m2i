@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         session_start();
         var_dump($_SESSION); exit;
         //die('OK');
+        
         header('Location: index.php');
         exit;
     
