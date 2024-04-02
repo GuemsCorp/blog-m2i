@@ -27,3 +27,5 @@ define('NB_PAGINATE', 10);
 // Nom du site
 define('SITE_NAME', 'Guems Blog');
 define('SITE_SLOGAN', 'Le meilleur blog sportif !');
+
+define('ENV', 'PROD');

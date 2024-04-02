@@ -13,6 +13,10 @@ $pdo = pdoConnect();
 require 'core/core.inc.php';
 require 'lib/pluralize.lib.php';
 require 'lib/flash.lib.php';
+require 'lib/slugger.lib.php';
+
+require 'sql/category.sql.php';
+$categories = getAllCategories();
 
 // Router
 $page = DEFAULT_PAGE;
@@ -29,5 +33,7 @@ if (file_exists($url)) {
     echo "404 File Not Found !!!";
 }
 
-echo "<h2>Debug SESSION</h2>";
-var_dump($_SESSION);
+if (ENV == 'DEV') {
+    echo "<h2>Debug SESSION</h2>";
+    var_dump($_SESSION);
+}

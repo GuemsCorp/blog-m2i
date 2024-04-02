@@ -2,6 +2,7 @@
 #        Script MySQL.
 #------------------------------------------------------------
 
+/*!40101 SET NAMES utf8 */;
 
 #------------------------------------------------------------
 # Table: users
@@ -13,8 +14,9 @@ CREATE TABLE users(
         firstName Varchar (90) NOT NULL ,
         email     Varchar (140) NOT NULL ,
         phone     Varchar (10) ,
-        password  Varchar (10) NOT NULL ,
+        password  Varchar (255) NOT NULL ,
         role      Varchar (10) NOT NULL
+        ,CONSTRAINT users_AK UNIQUE (email)
 	,CONSTRAINT users_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -46,6 +48,7 @@ CREATE TABLE posts(
         active        Bool NOT NULL ,
         id_users      Int NOT NULL ,
         id_categories Int NOT NULL
+        ,CONSTRAINT posts_AK UNIQUE (slug)
 	,CONSTRAINT posts_PK PRIMARY KEY (id)
 )ENGINE=InnoDB;
 
@@ -86,6 +89,8 @@ CREATE TABLE define(
         id_tags Int NOT NULL
 	,CONSTRAINT define_PK PRIMARY KEY (id,id_tags)
 )ENGINE=InnoDB;
+
+
 
 
 ALTER TABLE posts

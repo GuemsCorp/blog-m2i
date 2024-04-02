@@ -11,4 +11,4 @@ function Granted() {
 
 function isGranted() {
     return isset($_SESSION['user']);
-}
+} 

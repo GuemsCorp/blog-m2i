@@ -1,4 +1,3 @@
-
 <?php require 'template/partials/header.inc.php'; ?>
 
         <!-- Post Content-->
